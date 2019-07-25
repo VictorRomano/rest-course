@@ -1,6 +1,8 @@
 package com.victorromano.restcourse.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @NamedQueries({
         @NamedQuery(
@@ -17,7 +19,11 @@ public class Book {
     @Id
     @GeneratedValue
     private Integer id;
+    @NotNull(message = "Title must not be null")
+    @NotEmpty(message = "Title must not be empty")
     private String title;
+    @NotNull(message = "Author must not be null")
+    @NotEmpty(message = "Author must not be empty")
     private String author;
 
     @Deprecated

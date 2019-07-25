@@ -25,7 +25,7 @@ public class BookRepositoryInMemory implements BookRepository {
     }
 
     @Override
-    public List<Book> findAll() {
+    public List<Book> findAll(String title) {
         List<Book> bookList = new ArrayList<>(books.values());
         return bookList;
     }
