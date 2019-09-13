@@ -2,7 +2,6 @@ package com.victorromano.restcourse.repository;
 
 import com.victorromano.restcourse.model.Customer;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -18,5 +17,7 @@ public interface CustomerRepository extends PagingAndSortingRepository<Customer,
 
     @Query(value = "select c from Customer c where id = 2")
     List<Customer> meuMetodo();
+
+    Integer countAllByCpf(@Param("cpf") String cpf);
 
 }
