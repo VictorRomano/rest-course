@@ -2,6 +2,8 @@ package com.victorromano.restcourse.controller;
 
 import com.victorromano.restcourse.model.Book;
 import com.victorromano.restcourse.repository.BookRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import java.util.List;
 @RequestMapping("/books")
 public class BookController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BookController.class);
     private BookRepository bookRepository;
 
     @Autowired
@@ -22,6 +25,7 @@ public class BookController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Book>> findAll() {
+        LOGGER.info("Finding all books");
         List<Book> books = bookRepository.findAll();
 
         return ResponseEntity
@@ -36,6 +40,7 @@ public class BookController {
 
     @RequestMapping(method = RequestMethod.POST)
     public Book save(@RequestBody Book book) {
+        LOGGER.info("Saving book '{}'", book.getTitle());
         return bookRepository.save(book);
     }
 
